@@ -1,4 +1,4 @@
-import React, { useContext, useRef } from 'react';
+import React, { useContext, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import { ViewContext } from '../context/AppContext'
 import { TierContext } from '../context/TierContext'
@@ -7,6 +7,7 @@ import buffiFetti from '../assets/buffifeti.png'
 import { CodeInput } from '../components/Input'
 
 const RegistrationCode = () => {
+  const [pageError, setPageError] = useState(null)
   const tierContext = useContext(TierContext)
   const { user, dispatch } = useContext(ViewContext)
   const { address } = user
@@ -25,7 +26,7 @@ const RegistrationCode = () => {
     }
     formBody = formBody.join('&');
 
-    async function postData(url) {
+    const postData = async (url) => {
       const res = await fetch(url, {
         method: 'POST', mode: 'cors',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
@@ -44,7 +45,10 @@ const RegistrationCode = () => {
         }
       })
       .then(() => dispatch({ type: 'REGISTERED', payload: true }))
-      .catch((error) => console.log(error))
+      .catch((error) => {
+        console.log(error)
+        setPageError(`Connect Error: ${error.message}`)
+      })
   }
 
   return (
@@ -54,23 +58,30 @@ const RegistrationCode = () => {
       </header>
       <div className="walletButtonContainer">
         <div className="mx-auto block w-full h-full text-center">
-          <div className="text-center w-full h-full">
-            <motion.img 
-              src={buffiFetti} alt="Buffifeti" role="presentation"
-              className="mx-auto mb-5" 
-              whileTap={{ scale: 0.95 }}
-              whileHover={{ scale: 1.075 }}
-            />
-            <CodeInput innerRef={inputRef} inputPlaceholder="Code" />
-            <motion.h4
-              onClick={() => registerCode()}
-              className="btn-primary"
-              whileTap={{ scale: 0.95 }}
-              whileHover={{ scale: 1.05 }}
-            >
-              Submit
-            </motion.h4>
-          </div>
+          {
+            pageError
+              ? <>
+                <div className="text-xs text-red-500 mb-12">{pageError}</div>
+                <a href="/" className="btn-primary">RELOAD PAGE</a>
+              </>
+              : <div className="text-center w-full h-full">
+                <motion.img
+                  src={buffiFetti} alt="Buffifeti" role="presentation"
+                  className="mx-auto mb-5"
+                  whileTap={{ scale: 0.95 }}
+                  whileHover={{ scale: 1.075 }}
+                />
+                <CodeInput innerRef={inputRef} inputPlaceholder="Code" />
+                <motion.h4
+                  onClick={() => registerCode()}
+                  className="btn-primary"
+                  whileTap={{ scale: 0.95 }}
+                  whileHover={{ scale: 1.05 }}
+                >
+                  Submit
+                </motion.h4>
+              </div>
+          }
         </div>
       </div>
     </>
