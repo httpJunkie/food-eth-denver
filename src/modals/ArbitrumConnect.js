@@ -1,7 +1,7 @@
-import React, { useContext } from 'react'
+import { useContext } from "react"
 import { motion } from 'framer-motion'
 
-import { ViewContext } from '../context/AppContext'
+import { ViewContext } from "../context/AppContext"
 import arbitrumLogo from '../assets/arbitrum-logo.svg'
 
 export default function ArbitrumConnect() {
@@ -14,9 +14,10 @@ export default function ArbitrumConnect() {
           method: 'wallet_switchEthereumChain',
           params: [{ chainId: '0x66eeb' }],
         })
-      } catch (switchError) {
+      } catch (error) {
         // This error code indicates that the chain has not been added to MetaMask.
-        if (switchError.code === 4902) {
+        console.log(error)
+        // if (error.code === 4902 || error?.data?.originalError?.code === 4902) {
           try {
             await window.ethereum.request({
               method: 'wallet_addEthereumChain',
@@ -34,13 +35,13 @@ export default function ArbitrumConnect() {
                 },
               ],
             })
-          } catch (addError) {
-            // user rejects the request to 'add chain' or param values are wrong, maybe you didn't use hex above for `chainId`?
-            console.log(`wallet_addEthereumChain Error: ${addError.message}`)
-            console.log(addError)
+          } catch (error) {
+            // user rejects the request to "add chain" or param values are wrong, maybe you didn't use hex above for `chainId`?
+            console.log(`wallet_addEthereumChain Error: ${error.message}`)
+            console.log(error)
           }
-        }
-        // handle other 'switch' errors
+        // }
+        // handle other "switch" errors
       }
     }
   }
