@@ -1,12 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
+
+import { ViewProvider } from "./context/AppContext"
+import Home from './view-components/Home'
+
+import "./styles/index.css";
+import "./styles/palette.css";
+import "./styles/fonts.css";
+import "./styles/elements.css";
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <ViewProvider>
+      <Home />
+    </ViewProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
