@@ -14,7 +14,7 @@ const RegistrationCode = () => {
 
   const registerCode = async () => {
     const { value } = inputRef.current
-    const url = 'http://localhost:9000'
+    const url = process.env.REACT_APP_SERVER_URL
     const details = { 'code': value, 'address': address }
     var formBody = []
 
