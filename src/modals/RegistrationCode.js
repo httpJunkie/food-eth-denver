@@ -40,9 +40,13 @@ const RegistrationCode = () => {
     postData(url)
       .then(res => {
         if (res.ok) {
+          console.log(`postData Result: `)
+          console.log(res)
           tierContext.updateTier(res.tier)
           // res example: { ok: true, code: '00003', tier: 1 }
         } else {
+          console.log(`postData Result: (else throw \`Error(res.text))\``)
+          console.log(res.text)
           setDisable(false)
           throw Error(res.text)
         }
@@ -52,6 +56,7 @@ const RegistrationCode = () => {
         setDisable(false)
       })
       .catch((error) => {
+        console.log(`postData \`.catch()\`: `)
         console.log(error)
         setPageError(`Connect Error: ${error.message}`)
         setDisable(false)

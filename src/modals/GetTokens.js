@@ -16,7 +16,7 @@ const GetTokens = () => {
   async function addBuff() {
     setDisable(true)
     try {
-      console.log(`Calling hitMe(${tierContext.tier})`)
+      console.log(`Calling hitMe(${tierContext.tier}) | env: ${process.env.NODE_ENV}`)
       await faucet.hitMe(tierContext.tier)
       dispatch({ type: 'SET_LOADING', payload: true })
 
@@ -35,10 +35,10 @@ const GetTokens = () => {
         })
         if (buffiTokenAdded) {
           dispatch({ type: 'SET_CLAIMED', payload: true })
-          console.log('BUFF tokens Added!')
+          console.log('BUFF tokens Added! | env: ${process.env.NODE_ENV}')
         } else {
           setDisable(false)
-          console.log('Claim dispatch failed, BUFF Token not added')
+          console.log('Claim dispatch failed, BUFF Token not added | env: ${process.env.NODE_ENV}')
           setPageError('WARNING: Claim dispatch failed, BUFF Token not added')
         }
 
@@ -49,7 +49,7 @@ const GetTokens = () => {
 
     } catch (error) {
       setDisable(false)
-      console.log(`HitFaucet Error:${error}`)
+      console.log(`HitFaucet Error:${error} | env: ${process.env.NODE_ENV}`)
       setPageError(`HitFaucet Error: ${error.message}`)
     }
   }
