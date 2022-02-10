@@ -22,6 +22,11 @@ body {
   color: white;
 }
 
+.btn-primary.disabled {
+  opacity: 0.65; 
+  cursor: not-allowed;
+}
+
 .main-content .btn-primary {
   --btn-block-padding: calc(14 / var(--base-font-size) * 1rem);
   --btn-font-size: calc(18 / var(--base-font-size) * 1rem);

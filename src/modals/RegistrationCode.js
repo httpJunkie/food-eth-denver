@@ -8,6 +8,7 @@ import { CodeInput } from '../components/Input'
 
 const RegistrationCode = () => {
   const [pageError, setPageError] = useState(null)
+  const [disable, setDisable] = useState(false)
   const tierContext = useContext(TierContext)
   const { user, dispatch } = useContext(ViewContext)
   const { address } = user
@@ -27,6 +28,7 @@ const RegistrationCode = () => {
     formBody = formBody.join('&');
 
     const postData = async (url) => {
+      setDisable(false)
       const res = await fetch(url, {
         method: 'POST', mode: 'cors',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
@@ -41,13 +43,19 @@ const RegistrationCode = () => {
           tierContext.updateTier(res.tier)
           // res example: { ok: true, code: '00003', tier: 1 }
         } else {
+          setDisable(false)
           throw Error(res.text)
         }
       })
-      .then(() => dispatch({ type: 'REGISTERED', payload: true }))
+      .then(() => 
+      {
+        dispatch({ type: 'REGISTERED', payload: true })
+        setDisable(false)
+      })
       .catch((error) => {
         console.log(error)
         setPageError(`Connect Error: ${error.message}`)
+        setDisable(false)
       })
   }
 
@@ -58,6 +66,11 @@ const RegistrationCode = () => {
       </header>
       <div className="walletButtonContainer">
         <div className="mx-auto block w-full h-full text-center">
+          {
+            process.env.NODE_ENV === 'development' && (disable
+            ? <>disable ui: true</>
+            : <>disable ui: false</>)
+          }
           {
             pageError
               ? <>
