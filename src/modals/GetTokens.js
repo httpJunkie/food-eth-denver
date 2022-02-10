@@ -26,7 +26,7 @@ const GetTokens = () => {
           params: {
             type: 'ERC20',
             options: {
-              address: '0xD1924Dc661A3E0563deFE8E8028485211799e2b0',
+              address: '0xB9Ec2Bf0986eB7EF58162De4f85Ae2BD31e22695',
               symbol: 'BUFF',
               decimals: 18,
               image: buffiGweiImg
