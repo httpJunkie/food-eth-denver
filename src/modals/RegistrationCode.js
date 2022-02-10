@@ -17,9 +17,10 @@ const RegistrationCode = () => {
   const registerCode = async () => {
     const { value } = inputRef.current
     const url = process.env.REACT_APP_SERVER_URL
+
+    // encode properties into format for the form body
     const details = { 'code': value, 'address': address }
     var formBody = []
-
     for (var property in details) {
       const encodedKey = encodeURIComponent(property)
       const encodedValue = encodeURIComponent(details[property])
@@ -43,7 +44,6 @@ const RegistrationCode = () => {
           console.log(`postData Result: `)
           console.log(res)
           tierContext.updateTier(res.tier)
-          // res example: { ok: true, code: '00003', tier: 1 }
         } else {
           console.log(`postData Result: (else throw \`Error(res.text))\``)
           console.log(res.text)
