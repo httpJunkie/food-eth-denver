@@ -21,8 +21,8 @@ export const smolNumberify = (amt, decimals = 18) => {
 
 export const ViewProvider = ({ children }) => {
   const [state, dispatch] = useImmerReducer(reducer, initialState)
-  const BuffiTruckAddress = '0xB9Ec2Bf0986eB7EF58162De4f85Ae2BD31e22695'
-  const faucetAddress = '0x5da8d01f03A5F3Db3Bc672358809Fe54Cb82D59a'
+  const BuffiTruckAddress = process.env.REACT_APP_BUFF_ADDRESS
+  const faucetAddress = process.env.REACT_APP_FAUCET_ADDRESS
 
   const setAccount = useCallback(async (provider, accounts, networkName, chainId, faucetAddress) => {
     if (accounts.length > 0) {
