@@ -44,13 +44,13 @@ const GetTokens = () => {
 
         } catch (error) {
           setDisable(false)
-          setPageError(`Get BUFF Error: ${error.message}`)
+          setPageError(`Request BUFF Error: ${error.message}`)
         }
 
     } catch (error) {
       setDisable(false)
-      console.log(`Get BUFF Error:${error}`)
-      setPageError(`Get BUFF Error: ${error.message}`)
+      console.log(`HitFaucet Error:${error}`)
+      setPageError(`HitFaucet Error: ${error.message}`)
     }
   }
 
