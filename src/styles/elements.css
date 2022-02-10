@@ -22,7 +22,7 @@ body {
   color: white;
 }
 
-.btn-primary.disabled {
+.btn-primary.disabled, .network-btns.disabled {
   opacity: 0.65; 
   cursor: not-allowed;
 }

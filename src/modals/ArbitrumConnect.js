@@ -61,9 +61,9 @@ export default function ArbitrumConnect() {
       <div className="walletButtonContainer">
         <div className="mx-auto block w-full h-full text-center">
           {
-            disable
+            process.env.NODE_ENV === 'development' && (disable
               ? <>disable ui: true</>
-              : <>disable ui: false</>
+              : <>disable ui: false</>)
           }
           {
             pageError

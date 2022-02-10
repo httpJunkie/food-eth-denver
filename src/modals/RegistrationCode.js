@@ -47,8 +47,7 @@ const RegistrationCode = () => {
           throw Error(res.text)
         }
       })
-      .then(() => 
-      {
+      .then(() => {
         dispatch({ type: 'REGISTERED', payload: true })
         setDisable(false)
       })
@@ -68,8 +67,8 @@ const RegistrationCode = () => {
         <div className="mx-auto block w-full h-full text-center">
           {
             process.env.NODE_ENV === 'development' && (disable
-            ? <>disable ui: true</>
-            : <>disable ui: false</>)
+              ? <>disable ui: true</>
+              : <>disable ui: false</>)
           }
           {
             pageError

@@ -16,7 +16,7 @@ const Wallet = () => {
       <div className="walletButtonContainer">
         <div className="mx-auto block w-full h-full text-center">
           <button onClick={() => connect()} disabled={false} type="button" className="network-btns text-center relative block w-full h-full">
-             {/*                   
+            {/*                   
               // should we use aria-pressed or have a good disabled state while (connecting to arbitrum or 
               // getting food tokens) */}
             <motion.img

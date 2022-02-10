@@ -20,32 +20,32 @@ const GetTokens = () => {
       await faucet.hitMe(tierContext.tier)
       dispatch({ type: 'SET_LOADING', payload: true })
 
-        try {
-          const buffiTokenAdded = await window.ethereum.request({
-            method: 'wallet_watchAsset',
-            params: {
-              type: 'ERC20',
-              options: {
-                address: '0xD1924Dc661A3E0563deFE8E8028485211799e2b0',
-                symbol: 'BUFF',
-                decimals: 18,
-                image: buffiGweiImg
-              }
+      try {
+        const buffiTokenAdded = await window.ethereum.request({
+          method: 'wallet_watchAsset',
+          params: {
+            type: 'ERC20',
+            options: {
+              address: '0xD1924Dc661A3E0563deFE8E8028485211799e2b0',
+              symbol: 'BUFF',
+              decimals: 18,
+              image: buffiGweiImg
             }
-          })
-          if (buffiTokenAdded) {
-            dispatch({ type: 'SET_CLAIMED', payload: true })
-            console.log('BUFF tokens Added!')
-          } else {
-            setDisable(false)
-            console.log('Claim dispatch failed, BUFF Token not added')
-            setPageError('WARNING: Claim dispatch failed, BUFF Token not added')
           }
-
-        } catch (error) {
+        })
+        if (buffiTokenAdded) {
+          dispatch({ type: 'SET_CLAIMED', payload: true })
+          console.log('BUFF tokens Added!')
+        } else {
           setDisable(false)
-          setPageError(`Request BUFF Error: ${error.message}`)
+          console.log('Claim dispatch failed, BUFF Token not added')
+          setPageError('WARNING: Claim dispatch failed, BUFF Token not added')
         }
+
+      } catch (error) {
+        setDisable(false)
+        setPageError(`Request BUFF Error: ${error.message}`)
+      }
 
     } catch (error) {
       setDisable(false)
@@ -61,10 +61,10 @@ const GetTokens = () => {
       </header>
       <div className="walletButtonContainer">
         <div className="mx-auto block w-full h-full">
-        {
+          {
             process.env.NODE_ENV === 'development' && (disable
-            ? <>disable ui: true</>
-            : <>disable ui: false</>)
+              ? <>disable ui: true</>
+              : <>disable ui: false</>)
           }
           {
             pageError

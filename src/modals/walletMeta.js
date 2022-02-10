@@ -20,7 +20,7 @@ export const walletMeta = {
     description: 'Connect with your Portis account',
   },
   arbitrumRinkeby: {
-    uri:'',
+    uri: '',
     description: 'Connect to Arbitrum Rinkeby'
   }
 };
