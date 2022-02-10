@@ -65,6 +65,8 @@ const RegistrationCode = () => {
                 <a href="/" title="Try connecting to Arbitrum Rinkeby network again" className="btn-primary">Try Again</a>
               </>
               : <div className="text-center w-full h-full">
+                {/*                   
+                // should we disable text while http request to server? */}
                 <motion.img
                   src={buffiFetti} alt="Buffifeti" role="presentation"
                   className="mx-auto mb-5"

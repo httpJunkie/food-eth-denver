@@ -65,6 +65,8 @@ const GetTokens = () => {
               </>
               : <>
                 <button onClick={addBuff} disabled={isLoading || claimed}
+                  // should we use aria-pressed or have a good disabled state while (connecting to arbitrum or 
+                  // getting food tokens)
                   type="button"
                   className="network-btns text-center relative block w-full h-full"
                 >
