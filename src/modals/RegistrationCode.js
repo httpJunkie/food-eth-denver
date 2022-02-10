@@ -69,8 +69,7 @@ const RegistrationCode = () => {
             process.env.NODE_ENV === 'development' && (disable
               ? <>disable ui: true</>
               : <>disable ui: false</>)
-          }
-          {
+          }{
             pageError
               ? <>
                 <div className="text-xs text-red-500 mb-12">{pageError}</div>
