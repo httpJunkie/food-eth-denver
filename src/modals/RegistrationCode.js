@@ -62,7 +62,7 @@ const RegistrationCode = () => {
             pageError
               ? <>
                 <div className="text-xs text-red-500 mb-12">{pageError}</div>
-                <a href="/" className="btn-primary">RELOAD PAGE</a>
+                <a href="/" title="Try connecting to Arbitrum Rinkeby network again" className="btn-primary">Try Again</a>
               </>
               : <div className="text-center w-full h-full">
                 <motion.img

@@ -14,7 +14,9 @@ const Pill = () => {
     ? <div className="pill signin-button flex flex-col gap-y-1">
       <p>{formatAddress(address)}</p>
       <div>
-        <img src={logout} alt="Logout"/>
+        <a title="back to eth denver" href="https://ethdenver.com">
+          <img src={logout} alt="Logout"/>
+        </a>
       </div>
     </div>
     : null
