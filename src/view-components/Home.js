@@ -73,20 +73,20 @@ const Home = () => {
       {
         process.env.NODE_ENV === 'development' 
           ? <div className="text-xs text-indigo-600 pl-6 pb-6">
-          <div>
-            <span className="font-light">REACT_APP_SERVER_URL: </span>
-            {process.env.REACT_APP_SERVER_URL}
+            <div>
+              <div className="font-light">REACT_APP_SERVER_URL: </div>
+              {process.env.REACT_APP_SERVER_URL}
+            </div>
+            <div>
+              <div className="font-light mt-3">REACT_APP_BUFF_ADDRESS: </div>
+              {process.env.REACT_APP_BUFF_ADDRESS}
+            </div>
+            <div>
+              <div className="font-light mt-3">REACT_APP_FAUCET_ADDRESS: </div>
+              {process.env.REACT_APP_FAUCET_ADDRESS}
+            </div>
           </div>
-          <div>
-            <span className="font-light">REACT_APP_BUFF_ADDRESS: </span>
-            {process.env.REACT_APP_BUFF_ADDRESS}
-          </div>
-          <div>
-            <span className="font-light">REACT_APP_FAUCET_ADDRESS: </span>
-            {process.env.REACT_APP_FAUCET_ADDRESS}
-          </div>
-        </div>
-        : null
+          : null
       }
     </div>
   )
