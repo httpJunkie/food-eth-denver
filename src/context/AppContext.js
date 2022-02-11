@@ -71,17 +71,17 @@ export const ViewProvider = ({ children }) => {
   useEffect(() => {
     if (window.ethereum) {
       connectUser()
+      
+      window.ethereum.on('accountsChanged', () => {
+        connectUser()
+      })
+      window.ethereum.on('chainChanged', () => {
+        connectUser()
+      })
+      window.ethereum.on('disconnect', () => {
+        dispatch({ type: 'SET_ACCOUNT', payload: initialState.user })
+      })
     }
-
-    window.ethereum.on('accountsChanged', () => {
-      connectUser()
-    })
-    window.ethereum.on('chainChanged', () => {
-      connectUser()
-    })
-    window.ethereum.on('disconnect', () => {
-      dispatch({ type: 'SET_ACCOUNT', payload: initialState.user })
-    })
   }, [connectUser, dispatch])
 
   const { contracts, isLoading, isConnected, isRegistered, name, chainId, provider, user, feedback, claimed } = state
