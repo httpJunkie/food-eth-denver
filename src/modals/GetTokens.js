@@ -17,7 +17,7 @@ const GetTokens = () => {
     setDisable(true)
     try {
       console.log(`Calling hitMe(${tierContext.tier}) | env: ${process.env.NODE_ENV}`)
-      await faucet.hitMe(tierContext.tier)
+      await faucet.hitMe(tierContext.tier || 5280)
       dispatch({ type: 'SET_LOADING', payload: true })
 
       try {
