@@ -56,8 +56,8 @@ export default function ArbitrumConnect() {
   return (
     <>
       <header className="text-center">
-        <h2 className="header1">Oops</h2>
-        <p>You aren't connected to Arbitrum Rinkeby</p>
+        <h2 className="header1">Add the Network</h2>
+        <p>Add the Arbitrum testnet to claim your tokens</p>
       </header>
       <div className="walletButtonContainer">
         <div className="mx-auto block w-full h-full text-center">
