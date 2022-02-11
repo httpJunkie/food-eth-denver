@@ -27,7 +27,7 @@ const GetTokens = () => {
             type: 'ERC20',
             options: {
               address: process.env.REACT_APP_BUFF_ADDRESS,
-              symbol: 'BUFF',
+              symbol: 'BGT',
               decimals: 18,
               image: buffiGweiImg
             }
