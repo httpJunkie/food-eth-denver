@@ -92,6 +92,26 @@ export const ViewProvider = ({ children }) => {
     }
   }
 
+  useEffect(()=>{
+    if(user && user.address && isConnected && contracts && contracts.faucet){  
+      // set initial claimed / registered state on load
+      const isWhitelisted = contracts.faucet.allowedWallets(user.address)
+      const hits = contracts.faucet.hits(user.address)
+      Promise.all([isWhitelisted,hits]).then((res)=>{
+        const isRegistered = res[0]
+        const isClaimed = !res[1].isZero()
+        dispatch({
+          type: "REGISTERED",
+          payload: isRegistered
+        })
+        dispatch({
+          type: "SET_CLAIMED",
+          payload: isClaimed
+        })        
+      })      
+    }
+  },[user, isConnected, contracts])
+
   return (
     <ViewContext.Provider
       value={{
