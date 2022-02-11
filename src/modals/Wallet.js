@@ -7,15 +7,13 @@ import { walletMeta } from '../modals/walletMeta'
 import { ViewContext } from '../context/AppContext'
 
 const Wallet = () => {
-  const { actions } = useContext(ViewContext)
+  const { provider, actions } = useContext(ViewContext)
   const { connect } = actions
 
   const renderInstallButton = () => {
     switch(true) {
-      case !window.ethereum && isMobile:
-        return <MobileInstallButton />
-      case window.ethereum:
-      case window.ethereum && isMobile:
+      case provider !== null:
+      case provider && isMobile:
         return (
           <motion.h4
             whileTap={{ scale: 0.95 }}
@@ -24,9 +22,11 @@ const Wallet = () => {
             {walletMeta['metamask']?.description}
           </motion.h4>
         )
-      case !window.ethereum:
-      default:
+      case !provider && isMobile:
+        return <MobileInstallButton />
+      case !provider:
         return <BrowserInstallButton />
+      default: console.log('no provider')
     }
   }
 
