@@ -20,6 +20,7 @@ body {
   cursor: pointer;
   appearance: none;
   color: white;
+  margin: 0 auto;
 }
 
 .btn-primary.disabled, .network-btns.disabled {
@@ -136,13 +137,13 @@ input::placeholder {
 
 }
 input {
-  border-radius: 20px;
+  border-radius: 25px;
   color: var(--brand-violet);
   background-color: #FFFFFF;
   padding: 4px 8px 4px 8px;
   font-size: 1.5em;
   font-weight: 700;
-  width: 75%;
+  width: 98%;
   margin: 4px auto 8px auto;
   border: 1px solid rgb(204, 204, 204);
   text-align: center;

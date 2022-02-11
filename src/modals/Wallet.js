@@ -15,6 +15,7 @@ const Wallet = () => {
       case !window.ethereum && isMobile:
         return <MobileInstallButton />
       case window.ethereum:
+      case window.ethereum && isMobile:
         return (
           <motion.h4
             whileTap={{ scale: 0.95 }}

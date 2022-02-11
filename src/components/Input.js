@@ -8,12 +8,9 @@ export const CodeInput = ({ innerRef, disabled, inputPlaceholder }) => {
       defaultValue=''
       disabled={disabled}
       initial={false}
-      // min='0'
       onKeyPress={keyBlock}
       placeholder={inputPlaceholder}
       required
-      // step='0.000001'
-      // type='number'
       ref={innerRef}
     />
   )
