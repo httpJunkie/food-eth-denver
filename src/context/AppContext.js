@@ -90,11 +90,12 @@ export const ViewProvider = ({ children }) => {
     } catch (e) {
       console.log(e)
     }
-  }
-
+  }  
   useEffect(()=>{
-    if(user && user.address && isConnected && contracts && contracts.faucet){  
+    if(user && user.address && isConnected && contracts && contracts.faucet && chainId === 421611){  
       // set initial claimed / registered state on load
+      console.log('setting initial state:');
+      
       const isWhitelisted = contracts.faucet.allowedWallets(user.address)
       const hits = contracts.faucet.hits(user.address)
       Promise.all([isWhitelisted,hits]).then((res)=>{
@@ -110,7 +111,7 @@ export const ViewProvider = ({ children }) => {
         })        
       })      
     }
-  },[user, isConnected, contracts])
+  },[user, isConnected, contracts, chainId])
 
   return (
     <ViewContext.Provider
