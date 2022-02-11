@@ -24,13 +24,11 @@ export const ViewProvider = ({ children }) => {
   const BuffiTruckAddress = process.env.REACT_APP_BUFF_ADDRESS
   const faucetAddress = process.env.REACT_APP_FAUCET_ADDRESS
 
-  const setAccount = useCallback(async (provider, accounts, networkName, chainId, faucetAddress) => {
+  const setAccount = useCallback(async (accounts) => {
     if (accounts.length > 0) {
       try {
-        // const balance = await buffiTruck.balanceOf(accounts[0])
         const connectedAccount = {
           address: accounts[0],
-          // balance: parseInt(smolNumberify(balance))
         }
         dispatch({ type: 'SET_ACCOUNT', payload: connectedAccount })
       } catch (e) {
@@ -50,7 +48,7 @@ export const ViewProvider = ({ children }) => {
         const buffiTruck = new ethers.Contract(BuffiTruckAddress, buffiTruckAbi.abi, signer)
         const faucet = new ethers.Contract(faucetAddress, faucetAbi.abi, signer)
         const accounts = await window.ethereum.request({ method: 'eth_accounts' })
-        setAccount(provider, accounts, name, chainId, buffiTruck, faucet)
+        setAccount(accounts)
         dispatch({
           type: 'CONNECTED_PROVIDER',
           payload: {
@@ -71,7 +69,6 @@ export const ViewProvider = ({ children }) => {
   useEffect(() => {
     if (window.ethereum) {
       connectUser()
-      
       window.ethereum.on('accountsChanged', () => {
         connectUser()
       })
@@ -89,9 +86,8 @@ export const ViewProvider = ({ children }) => {
   const connect = async () => {
     try {
       const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' })
-      setAccount(provider, accounts)
+      setAccount(accounts)
     } catch (e) {
-      // Dispatch an error message here
       console.log(e)
     }
   }

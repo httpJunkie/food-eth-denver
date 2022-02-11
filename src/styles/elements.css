@@ -23,8 +23,8 @@ body {
   margin: 0 auto;
 }
 
-.btn-primary.disabled, .network-btns.disabled {
-  opacity: 0.65; 
+.btn-primary:disabled > h4, .network-btns:disabled > h4 {
+  opacity: 0.65;
   cursor: not-allowed;
 }
 
