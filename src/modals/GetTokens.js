@@ -16,49 +16,40 @@ const GetTokens = () => {
   async function addBuff() {
     setDisable(true)
     try {
-      console.log(`Calling hitMe(${tierContext.tier})`)
-      const hitMe = await faucet.hitMe(tierContext.tier)
+      console.log(`Calling hitMe(${tierContext.tier}) | env: ${process.env.NODE_ENV}`)
+      await faucet.hitMe(tierContext.tier || 5280)
       dispatch({ type: 'SET_LOADING', payload: true })
-      await hitMe.wait().then(async(receipt) => {
 
-        if(receipt) {
-          try {
-            const buffiTokenAdded = await window.ethereum.request({
-              method: 'wallet_watchAsset',
-              params: {
-                type: 'ERC20',
-                options: {
-                  address: process.env.REACT_APP_BUFF_ADDRESS,
-                  symbol: 'BGT',
-                  decimals: 18,
-                  image: buffiGweiImg
-                }
-              }
-            })
-  
-            console.log(`buffiTokenAdded Result: `)
-            console.log(buffiTokenAdded)
-  
-            if (buffiTokenAdded) {
-              dispatch({ type: 'SET_CLAIMED', payload: true })
-              console.log('BUFF tokens Added!')
-            } else {
-              setDisable(false)
-              console.log('Claim dispatch failed, BUFF Token not added')
-              setPageError('WARNING: Claim dispatch failed, BUFF Token not added')
+      try {
+        const buffiTokenAdded = await window.ethereum.request({
+          method: 'wallet_watchAsset',
+          params: {
+            type: 'ERC20',
+            options: {
+              address: process.env.REACT_APP_BUFF_ADDRESS,
+              symbol: 'BGT',
+              decimals: 18,
+              image: buffiGweiImg
             }
-  
-          } catch (error) {
-            setDisable(false)
-            setPageError(`Request BUFF Error: ${error.message}`)
           }
+        })
+        if (buffiTokenAdded) {
+          dispatch({ type: 'SET_CLAIMED', payload: true })
+          console.log('BUFF tokens Added! | env: ${process.env.NODE_ENV}')
+        } else {
+          setDisable(false)
+          console.log('Claim dispatch failed, BUFF Token not added | env: ${process.env.NODE_ENV}')
+          setPageError('WARNING: Claim dispatch failed, BUFF Token not added')
         }
 
-      })
+      } catch (error) {
+        setDisable(false)
+        setPageError(`Request BUFF Error: ${error.message}`)
+      }
 
     } catch (error) {
       setDisable(false)
-      console.log(`HitFaucet Error:${error}`)
+      console.log(`HitFaucet Error:${error} | env: ${process.env.NODE_ENV}`)
       setPageError(`HitFaucet Error: ${error.message}`)
     }
   }
