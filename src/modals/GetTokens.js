@@ -19,7 +19,7 @@ const GetTokens = () => {
       console.log(`Calling hitMe(${tierContext.tier})`)
       const hitMe = await faucet.hitMe(tierContext.tier)
       dispatch({ type: 'SET_LOADING', payload: true })
-      await hitMe.wait().then((receipt) => {
+      await hitMe.wait().then(async(receipt) => {
 
         if(receipt) {
           try {
