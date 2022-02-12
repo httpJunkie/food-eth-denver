@@ -17,7 +17,8 @@ const Home = () => {
   const { address } = user
 
   if (process.env.NODE_ENV === 'production') {
-    console.log('AppVersion: v1.3')
+    console.log('AppVersion: v1.4')
+    console.log(`claimed: ${claimed}, isRegistered: ${isRegistered}, address: ${address}`)
     console.log(process.env.REACT_APP_SERVER_URL)
     console.log(process.env.REACT_APP_BUFF_ADDRESS)
     console.log(process.env.REACT_APP_FAUCET_ADDRESS)
