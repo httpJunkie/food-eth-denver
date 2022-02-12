@@ -17,6 +17,7 @@ const Home = () => {
   const { address } = user
 
   if (process.env.NODE_ENV === 'production') {
+    console.log('AppVersion: v1.3')
     console.log(process.env.REACT_APP_SERVER_URL)
     console.log(process.env.REACT_APP_BUFF_ADDRESS)
     console.log(process.env.REACT_APP_FAUCET_ADDRESS)
@@ -73,6 +74,10 @@ const Home = () => {
       {
         process.env.NODE_ENV === 'development' 
           ? <div className="text-xs text-indigo-600 pl-6 pb-6">
+            <div>
+              <div className="font-light">AppVersion: </div>
+              v1.3
+            </div>
             <div>
               <div className="font-light">REACT_APP_SERVER_URL: </div>
               {process.env.REACT_APP_SERVER_URL}

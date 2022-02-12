@@ -10,7 +10,7 @@ const GetTokens = () => {
   const [pageError, setPageError] = useState(null)
   const [disable, setDisable] = useState(false)
   const tierContext = useContext(TierContext)
-  const { contracts, isLoading, dispatch, claimed } = useContext(ViewContext)
+  const { contracts, isLoading, dispatch } = useContext(ViewContext)
   const { faucet } = contracts
 
   async function addBuff() {
@@ -21,7 +21,7 @@ const GetTokens = () => {
       dispatch({ type: 'SET_LOADING', payload: true })
 
       try {
-        const buffiTokenAdded = await window.ethereum.request({
+        await window.ethereum.request({
           method: 'wallet_watchAsset',
           params: {
             type: 'ERC20',
@@ -32,15 +32,16 @@ const GetTokens = () => {
               image: buffiGweiImg
             }
           }
-        })
-        if (buffiTokenAdded) {
+        }).then((res) => {
+          console.log('WatchAsset Result: ')
+          console.log(res)
           dispatch({ type: 'SET_CLAIMED', payload: true })
-          console.log('BUFF tokens Added! | env: ${process.env.NODE_ENV}')
-        } else {
+          console.log('BUFF tokens Added!')
+        }).catch(() => {
           setDisable(false)
-          console.log('Claim dispatch failed, BUFF Token not added | env: ${process.env.NODE_ENV}')
+          console.log('Claim dispatch failed, BUFF Token not added')
           setPageError('WARNING: Claim dispatch failed, BUFF Token not added')
-        }
+        })
 
       } catch (error) {
         setDisable(false)
