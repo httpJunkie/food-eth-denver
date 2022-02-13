@@ -3,7 +3,7 @@ import { motion } from 'framer-motion'
 
 import appStoreBadge from '../assets/appStore.svg'
 import googlePlayBadge from '../assets/googlePlayBadge.svg'
-import metaMaskFox from '../assets/metamask.svg'
+// import metaMaskFox from '../assets/metamask.svg'
 
 const installLinks = {
   appStore: {
@@ -18,9 +18,9 @@ const installLinks = {
   }
 }
 
-const Button = ({os}) => {
+const Button = ({ os }) => {
   return (
-    <a className='store-badge' href={os.link} title={os.title}rel='noopener noreferrer' target="_blank">
+    <a className='store-badge' href={os.link} title={os.title} rel='noopener noreferrer' target="_blank">
       <img src={os.image} alt={os.title} />
     </a>
   )
@@ -40,7 +40,7 @@ export const MobileInstallButton = () => {
 
 export const BrowserInstallButton = () => {
   return (
-    <motion.a 
+    <motion.a
       whileTap={{ scale: 0.95 }}
       whileHover={{ scale: 1.05 }}
       className='btn-primary mt-7'
