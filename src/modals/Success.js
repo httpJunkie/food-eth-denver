@@ -1,4 +1,5 @@
 import React, { useContext, useState } from 'react'
+import { CopyToClipboard } from 'react-copy-to-clipboard'
 import { motion } from 'framer-motion'
 
 import { ViewContext } from '../context/AppContext'
@@ -72,18 +73,26 @@ const Wallet = () => {
           }
         </div>
 
-        <div className="mx-auto block w-full text-center">
-          <div className="text-gray-800 mt-6 mb-4">If you do not see BGT in your wallet:</div>
-          <motion.button disabled={disable} onClick={importToken}
-            whileTap={{ scale: 0.95 }}
-            whileHover={{ scale: 1.05 }}
-            className='btn-primary mt-7'
-            href='https://metamask.io/'
-            title='Import BGT Token'
-            rel='noopener noreferrer'
-            target="_blank">
-            Import BGT Token
-          </motion.button>
+        <div className="mx-auto block w-full text-center mt-12">
+          <div class="grid grid-cols-2 gap-4">
+            <div>
+              <motion.button disabled={disable} onClick={importToken}
+                whileTap={{ scale: 0.95 }}
+                whileHover={{ scale: 1.05 }}
+                className='btn-primary mt-7'
+                href='https://metamask.io/'
+                title='Import BGT Token'
+                rel='noopener noreferrer'
+                target="_blank">
+                IMPORT BGT
+              </motion.button>
+            </div>
+            <div>
+              <CopyToClipboard className="btn-primary" text={process.env.REACT_APP_BUFF_ADDRESS}>
+                <button>COPY BGT</button>
+              </CopyToClipboard>
+            </div>
+          </div>
         </div>
 
       </div>
