@@ -19,31 +19,31 @@
 }
 
 .header1 {
-  font-size: calc((36 / var(--base-font-size) * 1rem));
-  line-height: calc(48 / var(--base-font-size) * 1rem);
+  font-size: calc((36 / var(--base-font-size) * 0.8625rem));
+  line-height: calc(48 / var(--base-font-size) * 0.8625rem);
   color: var(--brand-blackish);
   font-family: canada-type-gibson, sans-serif;
   font-weight: 600;
 }
 
 .header2 {
-  font-size: calc((28 / var(--base-font-size) * 1rem));
-  line-height: calc(37 / var(--base-font-size) * 1rem);
+  font-size: calc((28 / var(--base-font-size) * 0.75rem));
+  line-height: calc(37 / var(--base-font-size) * 0.75rem);
   color: var(--brand-blackish);
   font-weight: 700;
 }
 
 .header3 {
-  font-size: calc((22 / var(--base-font-size) * 1rem));
-  line-height: calc(29 / var(--base-font-size) * 1rem);
+  font-size: calc((22 / var(--base-font-size) * 0.65rem));
+  line-height: calc(29 / var(--base-font-size) * 0.65rem);
   color: var(--brand-whale);
   font-weight: 400;
 }
 
 .header4,
 .header5 {
-  font-size: calc(18 / var(--base-font-size) * 1rem);
-  line-height: calc(24 / var(--base-font-size) * 1rem);
+  font-size: calc(18 / var(--base-font-size) * 0.5rem);
+  line-height: calc(24 / var(--base-font-size) * 0.5rem);
   letter-spacing: 1px;
   color: black;
   font-weight: 400;

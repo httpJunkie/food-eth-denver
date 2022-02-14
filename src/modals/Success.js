@@ -79,7 +79,7 @@ const Wallet = () => {
               <motion.button disabled={disable} onClick={importToken}
                 whileTap={{ scale: 0.95 }}
                 whileHover={{ scale: 1.05 }}
-                className='btn-primary mt-7'
+                className='btn-slim'
                 href='https://metamask.io/'
                 title='Import BGT Token'
                 rel='noopener noreferrer'
@@ -88,7 +88,7 @@ const Wallet = () => {
               </motion.button>
             </div>
             <div>
-              <CopyToClipboard className="btn-primary" text={process.env.REACT_APP_BUFF_ADDRESS}>
+              <CopyToClipboard className="btn-slim" text={process.env.REACT_APP_BUFF_ADDRESS}>
                 <button>COPY BGT</button>
               </CopyToClipboard>
             </div>
