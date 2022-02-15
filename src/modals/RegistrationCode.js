@@ -19,7 +19,7 @@ const RegistrationCode = () => {
     const url = process.env.REACT_APP_SERVER_URL
 
     // encode properties into format for the form body
-    const details = { 'code': value, 'address': address }
+    const details = { 'code': value.toUpperCase(), 'address': address }
     var formBody = []
     for (var property in details) {
       const encodedKey = encodeURIComponent(property)

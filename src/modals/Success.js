@@ -9,6 +9,7 @@ import buffiGweiImg from '../assets/buffToken.png'
 const Wallet = () => {
   const [pageError, setPageError] = useState(null)
   const [disable, setDisable] = useState(false)
+  const [copyText, setCopyText] = useState("COPY BGT")
   const { actions } = useContext(ViewContext)
   const { connect } = actions
 
@@ -74,7 +75,7 @@ const Wallet = () => {
         </div>
 
         <div className="mx-auto block w-full text-center mt-12">
-          <div class="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-2 gap-4">
             <div>
               <motion.button disabled={disable} onClick={importToken}
                 whileTap={{ scale: 0.95 }}
@@ -88,8 +89,9 @@ const Wallet = () => {
               </motion.button>
             </div>
             <div>
-              <CopyToClipboard className="btn-slim" text={process.env.REACT_APP_BUFF_ADDRESS}>
-                <button>COPY BGT</button>
+              <CopyToClipboard onCopy={() => setCopyText("COPIED!")}
+                className="btn-slim" text={process.env.REACT_APP_BUFF_ADDRESS}>
+                <button>{copyText}</button>
               </CopyToClipboard>
             </div>
           </div>
