@@ -49,20 +49,9 @@ const Home = () => {
     <div className="App min-h-screen flex flex-col overflow-y-auto sm:overflow-hidden">
       {claimed && (
         <Confetti
-          drawShape={ctx => {
-            ctx.beginPath()
-            for (let i = 0; i < 22; i++) {
-              const angle = 0.4 * i
-              const x = (0.05 + (1.9 * angle)) * Math.cos(angle)
-              const y = (0.05 + (1.9 * angle)) * Math.sin(angle)
-              ctx.lineTo(x, y)
-            }
-            ctx.stroke()
-            ctx.closePath()
-          }}
-          recycle={true}
+          recycle={false}
           height={window.innerHeight}
-          numberOfPieces={300}
+          numberOfPieces={200}
           width={window.innerWidth}
           opacity={0.8}
         />
