@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import Confetti from 'react-confetti'
 
 import { ViewContext } from '../context/AppContext'
@@ -15,6 +15,10 @@ import Success from '../modals/Success'
 const Home = () => {
   const { user, chainId, claimed, isRegistered } = useContext(ViewContext)
   const { address } = user
+
+  useEffect(() => {
+    console.log("ReRender")
+  }, [address, chainId])
 
   if (process.env.NODE_ENV === 'production') {
     console.log('AppVersion: v1.5')
