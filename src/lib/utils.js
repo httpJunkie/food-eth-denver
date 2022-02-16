@@ -9,7 +9,6 @@ export const keyBlock = (event) => {
   const characterCode = event.which ? event.which : event.keyCode
 
   switch (true) {
-    case characterCode === 101:
     case characterCode === 43:
     case characterCode === 45:
       return event.preventDefault()
