@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import { motion } from 'framer-motion'
 import { isMobile } from 'react-device-detect'
 
-import { MobileInstallButton, BrowserInstallButton } from '../components/InstallMetaMask'
+// import { MobileInstallButton, BrowserInstallButton } from '../components/InstallMetaMask'
 import { walletMeta } from '../modals/walletMeta'
 import { ViewContext } from '../context/AppContext'
 
@@ -10,25 +10,25 @@ const Wallet = () => {
   const { provider, actions } = useContext(ViewContext)
   const { connect } = actions
 
-  const renderInstallButton = () => {
-    switch(true) {
-      case provider !== null:
-      case provider && isMobile:
-        return (
-          <motion.h4
-            whileTap={{ scale: 0.95 }}
-            whileHover={{ scale: 1.05 }}
-            className="btn-primary">
-            {walletMeta['metamask']?.description}
-          </motion.h4>
-        )
-      case !provider && isMobile:
-        return <MobileInstallButton />
-      case !provider:
-        return <BrowserInstallButton />
-      default: console.log('no provider')
-    }
-  }
+  // const renderInstallButton = () => {
+  //   switch(true) {
+  //     case provider !== null:
+  //     case provider && isMobile:
+  //       return (
+  //         <motion.h4
+  //           whileTap={{ scale: 0.95 }}
+  //           whileHover={{ scale: 1.05 }}
+  //           className="btn-primary">
+  //           {walletMeta['metamask']?.description}
+  //         </motion.h4>
+  //       )
+  //     case !provider && isMobile:
+  //       return <MobileInstallButton />
+  //     case !provider:
+  //       return <BrowserInstallButton />
+  //     default: console.log('no provider')
+  //   }
+  // }
 
   return (
     <>
@@ -45,7 +45,12 @@ const Wallet = () => {
               whileTap={{ scale: 0.95 }}
               whileHover={{ scale: 1.075 }}
               className="mx-auto mb-5" src={walletMeta['metamask']?.uri} alt="" role="presentation" />
-              {renderInstallButton()}
+            <motion.h4
+              whileTap={{ scale: 0.95 }}
+              whileHover={{ scale: 1.05 }}
+              className="btn-primary">
+              {walletMeta['metamask']?.description}
+            </motion.h4>
           </button>
         </div>
       </div>
