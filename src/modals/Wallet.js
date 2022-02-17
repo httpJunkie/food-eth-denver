@@ -1,13 +1,13 @@
 import React, { useContext } from 'react'
 import { motion } from 'framer-motion'
-import { isMobile } from 'react-device-detect'
+// import { isMobile } from 'react-device-detect'
 
 // import { MobileInstallButton, BrowserInstallButton } from '../components/InstallMetaMask'
 import { walletMeta } from '../modals/walletMeta'
 import { ViewContext } from '../context/AppContext'
 
 const Wallet = () => {
-  const { provider, actions } = useContext(ViewContext)
+  const { actions } = useContext(ViewContext)
   const { connect } = actions
 
   // const renderInstallButton = () => {
@@ -37,10 +37,7 @@ const Wallet = () => {
       </header>
       <div className="walletButtonContainer">
         <div className="mx-auto block w-full h-full text-center">
-          <button onClick={() => connect()} disabled={false} type="button" className="network-btns text-center relative block w-full h-full">
-            {/*                   
-              // should we use aria-pressed or have a good disabled state while (connecting to arbitrum or 
-              // getting food tokens) */}
+          <button onClick={() => connect()} type="button" className="network-btns text-center relative block w-full h-full">
             <motion.img
               whileTap={{ scale: 0.95 }}
               whileHover={{ scale: 1.075 }}

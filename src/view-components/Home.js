@@ -17,7 +17,7 @@ const Home = () => {
   const { address } = user
 
   if (process.env.NODE_ENV === 'production') {
-    console.log('AppVersion: v1.6')
+    console.log('AppVersion: v1.7')
     console.log(`claimed: ${claimed}, isRegistered: ${isRegistered}, address: ${address}`)
     console.log(process.env.REACT_APP_SERVER_URL)
     console.log(process.env.REACT_APP_BUFF_ADDRESS)
@@ -37,7 +37,7 @@ const Home = () => {
       case claimed:
         return <Success />
       default:
-        return <Wallet />
+        return <TierProvider><RegistrationCode /></TierProvider>
     }
   }
 

@@ -10,9 +10,11 @@ const RegistrationCode = () => {
   const [pageError, setPageError] = useState(null)
   const [disable, setDisable] = useState(false)
   const tierContext = useContext(TierContext)
-  const { user, dispatch } = useContext(ViewContext)
+  const { provider, user, dispatch } = useContext(ViewContext)
   const { address } = user
   const inputRef = useRef()
+
+  console.log(provider)
 
   const registerCode = async () => {
     const { value } = inputRef.current
