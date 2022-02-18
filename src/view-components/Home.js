@@ -26,18 +26,33 @@ const Home = () => {
 
   const renderView = () => {
     switch (true) {
+      // 01
       case !address:
         return <Wallet />
+
+      // 02
       case address && (chainId !== 421611):
         return <ArbitrumConnect />
-      case !isRegistered:
+
+      // 03
+      case address && !isRegistered && (chainId === 421611):
         return <TierProvider><RegistrationCode /></TierProvider>
+
+      // 03b
+      case !address && !isRegistered && (chainId === 421611):
+        return <TierProvider><RegistrationCode /></TierProvider>
+
+      // 04
       case address && !claimed && (chainId === 421611):
         return <TierProvider><GetTokens /></TierProvider>
+
+      //05
       case claimed:
         return <Success />
+
+      // 06
       default:
-        return <TierProvider><RegistrationCode /></TierProvider>
+        return <Wallet />
     }
   }
 
